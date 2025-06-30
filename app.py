@@ -1,6 +1,14 @@
 
 # Customized NFL Q&A App using Streamlit
 
+# Fix SQLite version issue for ChromaDB on Streamlit Cloud
+try:
+    __import__('pysqlite3')
+    import sys
+    sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
+except ImportError:
+    pass
+
 import streamlit as st
 import chromadb
 from transformers import pipeline
